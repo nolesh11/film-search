@@ -14,7 +14,7 @@ async function getFilm() {
   let director = document.querySelector(".director");
 
   try {
-    let url = `http://www.omdbapi.com/?t=${searchInput}&i=tt3896198&apikey=83199631`;
+    let url = `https://www.omdbapi.com/?t=${searchInput}&i=tt3896198&apikey=83199631`;
     let response = await fetch(url);
     let data = await response.json();
 
