@@ -4,33 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/498f4fc274.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div id="container">
-      <h1 id="header">OMDB Movie Search</h1>
 
-      <input type="text" id="searchInput" placeholder="Enter movie title" />
-      <button id="searchButton">Search</button>
-      <button id="favBtn">Добавить в избранные</button>
-      <div id="movieInfo">
+    <section>
+      <div class="container" id="container">
+          <h1 id="header">OMDB Movie Search</h1>
+          <div class="theameMode" id="theameMode">
+            <div class="tumbler" id="tumbler"></div>
+          </div>
+      </div>
+
+      <div class="searchContainer" id="searchContainer">
+        <input type="text" id="searchInput" placeholder="Введите название фильма" />
+        <button id="searchButton">Search</button>
+      </div>
+
+      <div class="filmResult" id="filmResult">
+        <i class="fa-regular fa-star favBtn" id="favBtn"></i>
         <img class="img" src="" alt="" />
-        <h2 class="title">рш</h2>
-        <p class="type"></p>
-        <p class="year"></p>
-        <p class="runTime"></p>
-        <p class="genre"></p>
-        <p class="director"></p>
+        <div id="movieInfo">
+          <div class="title"></div>
+          <div class="type"></div>
+          <div class="year"></div>
+          <div class="runTime"></div>
+          <div class="genre"></div>
+          <div class="director"></div>
+        </div>
       </div>
 
       <div id="favContainer">
         Избранные:
-        <img class="imgFav" src="" alt="">
-        <div class="titleFav"></div>
-        <div class="typeFav"></div>
       </div>
-
       
-    </div>
+    </section>
+
+
     <script src="./main.js"></script>
   </body>
 </html>
