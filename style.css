@@ -79,7 +79,7 @@ input {
   border-radius: 20px;
   margin-bottom: 10px;
   display: flex;
-  justify-content: space-between;
+  gap: 100px;
   position: relative;
 }
 
@@ -104,3 +104,4 @@ input {
   background-color: #ffffff80;
   display: none;
 }
+

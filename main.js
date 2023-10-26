@@ -1,75 +1,68 @@
 // переменные
 
-let searchBtn = document.getElementById('searchButton');
-let favBtn = document.getElementById('favBtn');
+const searchBtn = document.getElementById('searchButton')
+const favBtn = document.getElementById('favBtn')
 
-
-searchBtn.addEventListener('click', getFilm);
+searchBtn.addEventListener('click', getFilm)
 
 // асинхронные функции
 
-async function getFilm() {
-  let searchInput = document.getElementById('searchInput').value;
-  let img = document.querySelector('.img');
-  let title = document.querySelector('.title');
-  let type = document.querySelector('.type');
-  let year = document.querySelector('.year');
-  let runTime = document.querySelector('.runTime');
-  let genre = document.querySelector('.genre');
-  let director = document.querySelector('.director');
+async function getFilm () {
+  const searchInput = document.getElementById('searchInput').value
+  const img = document.querySelector('.img')
+  const title = document.querySelector('.title')
+  const type = document.querySelector('.type')
+  const year = document.querySelector('.year')
+  const runTime = document.querySelector('.runTime')
+  const genre = document.querySelector('.genre')
+  const director = document.querySelector('.director')
 
-  try {
-    let url = `https://www.omdbapi.com/?t=${searchInput}&i=tt3896198&apikey=83199631`;
-    let response = await fetch(url);
-    let data = await response.json();
+  const url = `https://www.omdbapi.com/?t=${searchInput}&i=tt3896198&apikey=83199631`
+  const response = await fetch(url)
+  const data = await response.json()
 
-    img.src = data.Poster;
-    title.innerHTML = data.Title;
-    type.innerHTML = data.Type;
-    year.innerHTML = data.Year;
-    runTime.innerHTML = data.Runtime;
-    genre.innerHTML = data.Genre;
-    director.innerHTML = data.Director;
-
-  } catch (err) {
-    throw err;
-  }
+  img.src = data.Poster
+  title.innerHTML = data.Title
+  type.innerHTML = data.Type
+  year.innerHTML = data.Year
+  runTime.innerHTML = data.Runtime
+  genre.innerHTML = data.Genre
+  director.innerHTML = data.Director
 
   favBtn.addEventListener('click', function () {
-    let favorites = JSON.parse(localStorage.getItem('favorites')) || []
-    let img = document.querySelector(".img")
-    let title = document.querySelector(".title")
-    let type = document.querySelector(".type")
-    let year = document.querySelector(".year")
-    let runTime = document.querySelector(".runTime")
-    let genre = document.querySelector(".genre")
-    let director = document.querySelector(".director")
-    
-    let movie = {
-        img: img.src,
-        title: title.innerText,
-        type: type.innerText,
-        year: year.innerText,
-        runTime: runTime.innerText,
-        genre: genre.innerText,
-        director: director.innerText
-    };
-    console.log(movie.img);
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || []
+    const img = document.querySelector('.img')
+    const title = document.querySelector('.title')
+    const type = document.querySelector('.type')
+    const year = document.querySelector('.year')
+    const runTime = document.querySelector('.runTime')
+    const genre = document.querySelector('.genre')
+    const director = document.querySelector('.director')
 
-    favorites.push(movie);
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    const movie = {
+      img: img.src,
+      title: title.innerText,
+      type: type.innerText,
+      year: year.innerText,
+      runTime: runTime.innerText,
+      genre: genre.innerText,
+      director: director.innerText
+    }
+    console.log(movie.img)
+
+    favorites.push(movie)
+    localStorage.setItem('favorites', JSON.stringify(favorites))
     displayFavorites()
   })
 
   favBtn.classList.add('active')
-
 }
 
-function displayFavorites() {
-  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-  const favContainer = document.getElementById('favContainer');
+function displayFavorites () {
+  const favorites = JSON.parse(localStorage.getItem('favorites')) || []
+  const favContainer = document.getElementById('favContainer')
 
-  favorites.forEach(function(movie) {
+  favorites.forEach(function (movie) {
     const movieElement = `
       <div class="favoriteMovie">
         <img src="${movie.img}" alt="${movie.title}">
@@ -80,27 +73,26 @@ function displayFavorites() {
         <div>Genre: ${movie.genre}</div>
         <div>Director: ${movie.director}</div>
       </div>
-    `;
+    `
 
-    favContainer.innerHTML += movieElement;
-  });
+    favContainer.innerHTML += movieElement
+  })
 }
 
+const theameMode = document.getElementById('theameMode')
+const tumbler = document.getElementById('tumbler')
+const container = document.getElementById('container')
+const searchContainer = document.getElementById('searchContainer')
+const filmResult = document.getElementById('filmResult')
+const h1 = document.getElementById('header')
 
-let theameMode = document.getElementById('theameMode')
-let tumbler = document.getElementById('tumbler')
-let container = document.getElementById('container')
-let searchContainer = document.getElementById('searchContainer')
-let filmResult = document.getElementById('filmResult')
-let h1 = document.getElementById('header')
-
-let isTumblerRight = false;
+let isTumblerRight = false
 theameMode.addEventListener('click', () => {
-  console.log('hi');
+  console.log('hi')
   if (isTumblerRight) {
     theameMode.style.background = 'white'
     tumbler.style.background = 'black'
-    tumbler.style.transform = 'translateX(0)';
+    tumbler.style.transform = 'translateX(0)'
     container.style.background = '#ffffff80'
     searchContainer.style.background = '#ffffff80'
     h1.style.color = 'black'
@@ -108,11 +100,11 @@ theameMode.addEventListener('click', () => {
   } else {
     theameMode.style.background = 'black'
     tumbler.style.background = 'white'
-    tumbler.style.transform = 'translateX(35px)';
+    tumbler.style.transform = 'translateX(35px)'
     container.style.background = '#565555'
     searchContainer.style.background = '#565555'
     h1.style.color = '#ffffff80'
     filmResult.style.background = '#565555'
   }
-  isTumblerRight = !isTumblerRight;
+  isTumblerRight = !isTumblerRight
 })
