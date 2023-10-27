@@ -107,4 +107,5 @@ theameMode.addEventListener('click', () => {
     filmResult.style.background = '#565555'
   }
   isTumblerRight = !isTumblerRight
+  localStorage.setItem(theameMode, JSON.stringify(theameMode))
 })

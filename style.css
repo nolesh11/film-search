@@ -11,6 +11,10 @@ body {
   height: 100vh;
 }
 
+.close {
+  display: none;
+}
+
 section {
   width: 80%; 
   max-width: 1000px;
